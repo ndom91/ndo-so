@@ -2,60 +2,44 @@ import { useCallback, useState } from 'react'
 import { Avatar, Card, Input, Loading } from '@nextui-org/react'
 import { signIn } from 'next-auth/react'
 import ShortcutCard from '@/components/shortcutCard'
+import { trpc } from "@/utils/trpc";
 
 type ShortcutListProps = {
-email: string | undefined | null
+  email: string | undefined | null
+}
+
+type EpicType = {
+  owner_ids: string[]
+}
+
+type StateType = {
+  id: string
+  name: string
+}
+
+type WorkflowType = {
+  id: string
+  name: string
+  states: StateType[]
+}
+
+type StoryType = {
+  workflow_state_id: number
+  updated_at: number
 }
 
 export default function ShortcutList({ email }: ShortcutListProps) {
-  const [filter, setFilter] = useState('')
-  const [loading, setLoading] = useState(true)
-  const [stories, setStories] = useState([])
-  const [epics, setEpics] = useState([])
-  const [members, setMembers] = useState([])
-  const [workflows, setWorkflows] = useState([])
-  const [originalStories, setOriginalStories] = useState([])
+  let stories: StoryType[] = []
+  let workflows: WorkflowType[] = []
+  let epics: EpicType[] = []
 
-  if (!filter && stories !== originalStories) setStories(originalStories)
-
-  const filteredStories = originalStories.filter((story) => {
-    if (story.name.toLowerCase().includes(filter.toLowerCase())) {
-      return story
-    } else if (story.id.toString().includes(filter)) {
-      return story
-    }
-  })
-  if (JSON.stringify(filteredStories) !== JSON.stringify(stories)) {
-    setStories(filteredStories)
+  const { isLoading, isSuccess, error, data } = trpc.useQuery(["shortcut.list", { email }]);
+  if (!isLoading && data) {
+    stories = data.stories
+    workflows = data.workflows
+    epics = data.epics
   }
-
-  const fetchStories = useCallback(async () => {
-    setLoading(true)
-    try {
-      const shortcutDataRes = await fetch(
-        `/api/shortcut?email=${encodeURIComponent(email)}`
-      )
-
-      const {
-        epics: scEpics,
-        members: scMembers,
-        stories: scStories,
-        workflows: scWorkflows,
-      } = await shortcutDataRes.json()
-
-      setWorkflows(scWorkflows)
-      setEpics(scEpics)
-      setMembers(scMembers)
-      setStories(scStories)
-      setOriginalStories(scStories)
-    } catch (e) {
-      console.error(e)
-    } finally {
-      setLoading(false)
-    }
-  }, [email])
-
-  email && !stories && fetchStories()
+  const [filter, setFilter] = useState('')
 
   return (
     <Card
@@ -78,7 +62,6 @@ export default function ShortcutList({ email }: ShortcutListProps) {
           <Input
             bordered
             color="secondary"
-            style={{ '--nextui--inputTextColor': '#9750dd' }}
             borderWeight="light"
             labelPlaceholder="Search"
             contentClickable
@@ -89,8 +72,16 @@ export default function ShortcutList({ email }: ShortcutListProps) {
       </Card.Header>
       <Card.Body className="m-0 px-1 py-0">
         <ul className="flex flex-col gap-2">
-          {stories?.length > 0 && epics && workflows && email ? (
-            stories.map((story) => (
+          {!isLoading && stories && epics && workflows && email ? (
+            stories.filter(story => {
+              if (story.name.toLowerCase().includes(filter.toLowerCase())) {
+                return story
+              } else if (story.id.toString().includes(filter)) {
+                return story
+              } else if (!filter) {
+                return story
+              }
+            }).map((story) => (
               <ShortcutCard
                 epics={epics}
                 workflows={workflows}
@@ -111,12 +102,14 @@ export default function ShortcutList({ email }: ShortcutListProps) {
                 to continue
               </span>
             </div>
-          ) : loading ? (
+          ) : isLoading ? (
             <div className="my-4 flex w-full justify-center">
               <Loading type="points-opacity" />
             </div>
-          ) : (
+          ) : isSuccess && !stories?.length ? (
             <div className="my-4 flex w-full justify-center">No Results</div>
+          ) : (
+            <div className="my-4 flex w-full justify-center text-red-800 dark:text-red-400">{error?.message}</div>
           )}
         </ul>
       </Card.Body>

@@ -198,7 +198,6 @@ export const shortcutRouter = createProtectedRouter()
           stories,
           workflows: workflowStates,
           epics: teamEpics,
-          members: activeMembers,
         }
       } catch (error) {
         console.error('ERR', error)
