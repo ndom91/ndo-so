@@ -31,7 +31,9 @@ type StoryType = {
   story_type: string
   app_url: string
   epic_id: string
+  epic_name: string
   workflow_state_id: string
+  workflow_state_name: string
   workflow_id: string
   updated_at: number
 }

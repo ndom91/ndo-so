@@ -157,6 +157,14 @@ export const shortcutRouter = createProtectedRouter()
           .filter(
             (story) => !COMPLETE_STATE_IDS.includes(parseInt(story.workflow_state_id))
           )
+          .map(story => {
+            story.epic_name = teamEpics.find((epic) => epic.id === story.epic_id)?.name ?? ''
+            story.workflow_state_name = workflowStates
+              .find((wf) => wf.id === story.workflow_id)
+              ?.states.find((state) => state.id === story.workflow_state_id)?.name ?? ''
+
+            return story
+          })
           .sort((a, b) => {
             if (a.updated_at < b.updated_at) {
               return -1

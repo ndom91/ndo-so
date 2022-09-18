@@ -56,6 +56,10 @@ export default function ShortcutList({ email }: ShortcutListProps) {
             stories.filter(story => {
               if (story.name.toLowerCase().includes(filter.toLowerCase())) {
                 return story
+              } else if (story.workflow_state_name.toLowerCase().includes(filter.toLowerCase())) {
+                return story
+              } else if (story.epic_name.toLowerCase().includes(filter.toLowerCase())) {
+                return story
               } else if (story.id.toString().includes(filter)) {
                 return story
               } else if (!filter) {
