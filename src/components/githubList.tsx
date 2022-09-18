@@ -9,7 +9,7 @@ type GithubListProps = {
 }
 
 export default function GithubList({ email }: GithubListProps) {
-  const { isLoading, isSuccess, error, data } = trpc.useQuery(["github.list", { email }]);
+  const { isLoading, isSuccess, error, data } = trpc.useQuery(["github.list"]);
   const [filter, setFilter] = useState('')
 
   return (

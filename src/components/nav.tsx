@@ -92,7 +92,6 @@ export default function Nav() {
                   />
                 </svg>
               }
-              onClick={(e: React.FormEvent<HTMLButtonElement>) => e.preventDefault()}
             >
               <div
                 className="flex items-center justify-between"

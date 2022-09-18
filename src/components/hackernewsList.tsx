@@ -10,12 +10,35 @@ import {
 } from '@nextui-org/react'
 import { decodeHtml, timeAgo } from '@/utils/helpers'
 
+type HackerNewsPost = {
+  objectID: number
+  points: number
+  title: string
+  url: string
+  num_comments: number
+  created_at_i: number
+}
+
+type CommentType = {
+  title: string
+  comment_text: string
+  author: string
+  objectID: number
+  created_at_i: number
+}
+
+type HackerNewsComment = {
+  title: string
+  created_at_i: number
+  items: CommentType[]
+}
+
 /**
  * Algolia HN API: https://hn.algolia.com/api
  */
 export default function HackerNewsList() {
-  const [posts, setPosts] = useState([])
-  const [comment, setComment] = useState([])
+  const [posts, setPosts] = useState<HackerNewsPost[]>([])
+  const [comment, setComment] = useState<HackerNewsComment>()
   const [openModal, setOpenModal] = useState(false)
 
   const fetchFrontPage = async () => {
@@ -25,7 +48,6 @@ export default function HackerNewsList() {
       )
       if (res.ok) {
         const data = await res.json()
-        /* console.log('HN Data', data.hits) */
         setPosts(data.hits)
       } else {
         throw new Error('Failed to fetch')
@@ -42,7 +64,6 @@ export default function HackerNewsList() {
       )
       if (res.ok) {
         const data = await res.json()
-        console.log('comment data', data)
         setComment({ ...comment, title: post.title, items: data.hits })
       } else {
         throw new Error('Failed to fetch')
@@ -136,18 +157,17 @@ export default function HackerNewsList() {
         onClose={closeHandler}
       >
         <Modal.Header className="flex justify-start">
-          <div className="text-left text-xl font-light">{comment.title}</div>
+          <div className="text-left text-xl font-light">{comment?.title}</div>
         </Modal.Header>
         <Modal.Body className="overflow-y-scroll hover:cursor-default">
-          {comment.items?.length > 0 ? (
-            comment.items?.map((c) => (
+          {comment?.items?.length > 0 ? (
+            comment?.items?.map((c) => (
               <Row
                 key={c.objectID}
                 justify="space-between"
                 className="flex-col rounded-lg border-2 border-gray-200 dark:border-slate-800"
               >
                 <div
-                  size={14}
                   className="break-word text-ellipsis whitespace-pre-wrap p-2"
                   dangerouslySetInnerHTML={{
                     __html: decodeHtml(c.comment_text),
