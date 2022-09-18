@@ -1,12 +1,12 @@
 import { Badge } from '@nextui-org/react'
 import { timeAgo } from '@/utils/helpers'
 
-const storyTypeIcons = {
+const storyTypeIcons: { [key: string]: string } = {
   bug: '🐛',
   feature: '🚧',
 }
 
-export default function ShortcutCard({ story, workflows, epics }) {
+export default function ShortcutCard({ story, workflows, epics }: ShortcutCardType) {
   const workflow = workflows
     .find((wf) => wf.id === story.workflow_id)
     ?.name.slice(0, 3)

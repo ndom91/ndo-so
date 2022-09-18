@@ -3,22 +3,8 @@ import { z } from "zod";
 import * as trpc from "@trpc/server";
 /* import { serverTiming } from '@/utils/helpers' */
 
-const wantedRepoOrgs = ['checkly']
+/* const wantedRepoOrgs = ['checkly'] */
 /* const nicoEmails = ['yo@ndo.dev', 'bballs91@gmail.com'] */
-
-type NotificationType = {
-  id: string
-  reason: string
-  updated_at: number
-  subject: {
-    title: string
-  }
-  repository: {
-    owner: {
-      login: string
-    }
-  }
-}
 
 export const githubRouter = createProtectedRouter()
   .query("list", {

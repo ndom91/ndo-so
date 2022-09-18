@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import { Avatar, Card, Input, Loading } from '@nextui-org/react'
 import { signIn } from 'next-auth/react'
 import ShortcutCard from '@/components/shortcutCard'
@@ -6,26 +6,6 @@ import { trpc } from "@/utils/trpc";
 
 type ShortcutListProps = {
   email: string | undefined | null
-}
-
-type EpicType = {
-  owner_ids: string[]
-}
-
-type StateType = {
-  id: string
-  name: string
-}
-
-type WorkflowType = {
-  id: string
-  name: string
-  states: StateType[]
-}
-
-type StoryType = {
-  workflow_state_id: number
-  updated_at: number
 }
 
 export default function ShortcutList({ email }: ShortcutListProps) {

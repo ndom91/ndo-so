@@ -11,36 +11,6 @@ const COMPLETE_STATE_IDS = [
 ]
 const nicoEmails = ['yo@ndo.dev', 'bballs91@gmail.com']
 
-type MemberType = {
-  disabled: boolean
-  id: string
-  profile: {
-    name: string
-    email_address: string
-    deactivated: boolean
-  }
-}
-
-type EpicType = {
-  owner_ids: string[]
-}
-
-type StateType = {
-  id: string
-  name: string
-}
-
-type WorkflowType = {
-  id: string
-  name: string
-  states: StateType[]
-}
-
-type StoryType = {
-  workflow_state_id: number
-  updated_at: number
-}
-
 type StoryResType = {
   data: StoryType[]
 }
@@ -185,7 +155,7 @@ export const shortcutRouter = createProtectedRouter()
         const storyData: StoryResType = await storyRes.json()
         const stories = storyData.data
           .filter(
-            (story) => !COMPLETE_STATE_IDS.includes(story.workflow_state_id)
+            (story) => !COMPLETE_STATE_IDS.includes(parseInt(story.workflow_state_id))
           )
           .sort((a, b) => {
             if (a.updated_at < b.updated_at) {

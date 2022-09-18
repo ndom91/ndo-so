@@ -40,7 +40,7 @@ function getFormattedDate(date: Date, prefomattedDate: boolean | string = false,
   return `${day}. ${month} ${year}. at ${hours}:${minutes}`
 }
 
-export function timeAgo(dateParam: string) {
+export function timeAgo(dateParam: string | number) {
   if (!dateParam) {
     return null
   }

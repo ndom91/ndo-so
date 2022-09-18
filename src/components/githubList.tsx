@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Avatar, Loading, Card, Input } from '@nextui-org/react'
 import { signIn } from 'next-auth/react'
 import GithubCard from '@/components/githubCard'
@@ -6,18 +6,6 @@ import { trpc } from "@/utils/trpc";
 
 type GithubListProps = {
   email: string | undefined | null
-}
-
-type NotificationType = {
-  id: string
-  subject: {
-    title: string
-  }
-  repository: {
-    owner: {
-      login: string
-    }
-  }
 }
 
 export default function GithubList({ email }: GithubListProps) {
