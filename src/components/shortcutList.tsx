@@ -13,7 +13,7 @@ export default function ShortcutList({ email }: ShortcutListProps) {
   let workflows: WorkflowType[] = []
   let epics: EpicType[] = []
 
-  const { isLoading, isSuccess, error, data } = trpc.useQuery(["shortcut.list", { email }]);
+  const { isLoading, isSuccess, error, data } = trpc.useQuery(["shortcut.list"]);
   if (!isLoading && data) {
     stories = data.stories
     workflows = data.workflows

@@ -114,15 +114,11 @@ export const serverTiming: ServerTimingType = {
   measure: (name, desc) => {
     const now = perf.now()
     if (serverTiming.timings[name] && serverTiming.timings[name]?.start) {
-      // @ts-expect-error object not undefined
       serverTiming.timings[name].end = now 
-      // @ts-expect-error object not undefined
       serverTiming.timings[name].dur = now - serverTiming.timings[name].start
-      // @ts-expect-error object not undefined
       if (desc) serverTiming.timings[name].desc = desc
     } else {
       serverTiming.timings[name] = { start: now }
-      // @ts-expect-error object not undefined
       if (desc) serverTiming.timings[name].desc = desc
     }
   },
