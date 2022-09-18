@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Grid } from '@nextui-org/react'
 import { AnimatePresence } from 'framer-motion'
-import type { GetServerSidePropsContext } from "next";
 import { useSession } from 'next-auth/react'
+import type { GetServerSidePropsContext } from "next";
+import type { NextPage } from "next";
 
 import Layout from '@/components/layout'
 import GithubList from '@/components/githubList'
@@ -12,7 +13,7 @@ import HackerNewsList from '@/components/hackernewsList'
 import CommandWrapper from '@/components/commandWrapper'
 import { getServerAuthSession } from "@/server/common/get-server-auth-session";
 
-export default function Home() {
+const Home: NextPage = () => {
   const { data: session } = useSession()
 
   const [open, setOpen] = useState(false)
@@ -92,6 +93,8 @@ export default function Home() {
     </Layout>
   )
 }
+
+export default Home
 
 export async function getServerSideProps({ req, res }: {
   req: GetServerSidePropsContext["req"],
