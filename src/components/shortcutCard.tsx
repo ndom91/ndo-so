@@ -21,7 +21,7 @@ export default function ShortcutCard({ story, workflows, epics }: ShortcutCardTy
       >
         <div className="flex flex-grow flex-col items-start justify-center space-y-1">
           {story.epic_id ? (
-            <div className="text-sm font-bold text-slate-400">
+            <div className="text-sm text-slate-400">
               {story.epic_name}
             </div>
           ) : null}
