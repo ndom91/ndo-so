@@ -34,16 +34,16 @@ export default function GithuCard({ notification }) {
           .replace('pulls', 'pull')}
         target="_blank"
         rel="noopener noreferer noreferrer"
-        className="flex flex-col items-start justify-start rounded-md p-2 hover:cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800"
+        className="flex flex-col items-start justify-start rounded-md p-2 hover:cursor-pointer hover:bg-flamingo/30 dark:hover:bg-mauve/10"
       >
         <span className="flex w-full items-center justify-start gap-2 text-lg font-extralight">
           <div className="flex flex-col items-start justify-center">
             <span className="flex-grow">{notification.subject?.title}</span>
             <div className="flex items-center justify-start space-x-2">
-              <Badge variant="flat" color="primary" size="sm" disableOutline>
+              <Badge variant="flat" color="primary" size="sm" disableOutline className="child:bg-pink/25 child:text-mauve">
                 {notification.repository?.owner?.login}
               </Badge>
-              <Badge variant="flat" color="secondary" size="sm" disableOutline>
+              <Badge variant="flat" color="secondary" size="sm" disableOutline className="child:bg-lavender/50 dark:child:text-white child:text-overlay0 child:font-light">
                 {notification.reason}
               </Badge>
               <div className="text-sm font-extralight text-slate-400">

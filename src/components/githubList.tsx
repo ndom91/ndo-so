@@ -15,7 +15,7 @@ export default function GithubList({ email }: GithubListProps) {
   return (
     <Card
       css={{ p: '$6' }}
-      className="max-h-full flex-shrink-0 border-0 shadow-2xl dark:bg-gray-900/95"
+      className="max-h-full flex-shrink-0 border-0 shadow-2xl dark:bg-base"
       variant="shadow"
     >
       <Card.Header className="flex justify-between space-x-2 py-6">

@@ -131,7 +131,7 @@ export default function HackerNewsList() {
                       {post.points}
                     </Badge>
                     <span
-                      className="text-sm hover:cursor-pointer"
+                      className="text-sm hover:cursor-pointer text-overlay0"
                       onClick={(e) => openCommentModal(e, post)}
                     >
                       {post.num_comments ?? 0} Comments
