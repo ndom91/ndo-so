@@ -114,7 +114,7 @@ export default function HackerNewsList() {
                   href={post.url}
                   target="_blank"
                   rel="noopener noreferer noreferrer"
-                  className="flex flex-col items-start justify-start rounded-md p-2 hover:bg-gray-200 dark:hover:bg-gray-800"
+                  className="flex flex-col items-start justify-start rounded-md p-2 hover:bg-flamingo/30 dark:hover:bg-mauve/10"
                 >
                   <div className="flex justify-start">
                     <span className="text-lg font-extralight">
