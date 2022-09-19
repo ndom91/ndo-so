@@ -60,7 +60,7 @@ export default function HackerNewsList() {
   const fetchComments = async (post) => {
     try {
       const res = await fetch(
-        `http://hn.algolia.com/api/v1/search?tags=comment,story_${post.objectID}`
+        `https://hn.algolia.com/api/v1/search?tags=comment,story_${post.objectID}`
       )
       if (res.ok) {
         const data = await res.json()
