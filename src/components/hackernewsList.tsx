@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import {
+  css,
   Avatar,
   Badge,
   Button,
@@ -91,7 +92,7 @@ export default function HackerNewsList() {
   return (
     <Card
       css={{ p: '$6' }}
-      className="max-h-full w-full flex-shrink-0 border-0 shadow-2xl dark:bg-gray-900/95"
+      className="max-h-full w-full flex-shrink-0 border-0 shadow-2xl dark:bg-base"
       variant="shadow"
     >
       <Card.Header className="space-x-2 py-6">
@@ -123,7 +124,7 @@ export default function HackerNewsList() {
                   <div className="flex items-center justify-start space-x-2">
                     <Badge
                       variant="flat"
-                      color="primary"
+                      className="child:bg-pink/25 child:text-mauve"
                       size="sm"
                       disableOutline
                     >
@@ -135,7 +136,7 @@ export default function HackerNewsList() {
                     >
                       {post.num_comments ?? 0} Comments
                     </span>
-                    <span className="text-sm font-extralight text-slate-400">
+                    <span className="text-sm font-extralight text-lavender">
                       {timeAgo(post.created_at_i * 1000)}
                     </span>
                   </div>

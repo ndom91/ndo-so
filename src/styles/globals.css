@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 body {
-  /* background: linear-gradient(220.55deg, #565656 0%, #181818 100%); */
-  @apply bg-gradient-to-r from-gray-200 to-gray-400 dark:from-gray-900 dark:to-gray-600;
+  @apply bg-gradient-to-r dark:from-crust dark:to-mantle from-flamingo to-rosewater;
 }
 
 .nextui-navbar-container {
@@ -31,7 +30,7 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-200 dark:bg-gray-800;
+  @apply bg-gray-200 dark:bg-mantle;
   border-radius: 100vh;
   transition: all 250ms ease-in-out;
 }

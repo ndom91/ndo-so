@@ -34,7 +34,7 @@ export default function Nav() {
       isBordered={false}
       maxWidth="fluid"
       variant={'floating'}
-      className="bg-none"
+      className="bg-none child:!bg-gradient-to-bl child:dark:!from-base child:dark:!to-crust/80 child:!from-rosewater child:!to-flamingo/30"
     >
       <Navbar.Brand>
         <Avatar squared size="lg" src="/favicon.png" alt="ndo logo" />
@@ -47,7 +47,7 @@ export default function Nav() {
               size="lg"
               squared
               zoomed={!!session?.user?.image}
-              /* as="button" */
+              as="button"
               color="gradient"
               src={session?.user?.image ?? ''}
             />

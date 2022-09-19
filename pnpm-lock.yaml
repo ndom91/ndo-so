@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@catppuccin/tailwindcss': ^0.1.0
   '@nextui-org/react': 1.0.0-beta.10
   '@trpc/client': ^9.27.2
   '@trpc/next': ^9.27.2
@@ -46,6 +47,7 @@ dependencies:
   zod: 3.19.1
 
 devDependencies:
+  '@catppuccin/tailwindcss': 0.1.0
   '@types/node': 18.0.0
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
@@ -73,6 +75,19 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
+
+  /@catppuccin/palette/0.1.5:
+    resolution: {integrity: sha512-IQLsZwXDMpLc5CFGjIMa/gFnnFL/QLB280F11B51JweZHerZ/FgPXdIR4eQqn1CgrqI3wGfgnj1LVPx12DV/Uw==}
+    dev: true
+
+  /@catppuccin/tailwindcss/0.1.0:
+    resolution: {integrity: sha512-lklhwJCSVzdiurLo+Blp2DXT0A+7u4BnP6GAp/m8zM7/hKlB82+qgvKIcObc5RqlFeiosMH4/OpQfLyccpqMog==}
+    dependencies:
+      '@catppuccin/palette': 0.1.5
+      tailwindcss: 3.1.8
+    transitivePeerDependencies:
+      - ts-node
+    dev: true
 
   /@emotion/is-prop-valid/0.8.8:
     resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
