@@ -8,6 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Head>
         <title>ndo.so</title>
         <meta name="description" content="ndo.so" />
+        <meta name="darkreader-lock" />
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Container
