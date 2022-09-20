@@ -62,7 +62,7 @@ const Home: NextPage = () => {
         )}
       </AnimatePresence>
       <Grid.Container
-        className="h-full space-x-2 p-2 xl:space-x-8 xl:p-6"
+        className="h-full space-x-2 p-2 xl:space-x-8 xl:p-6 xl:py-4"
         wrap="nowrap"
       >
         <Grid

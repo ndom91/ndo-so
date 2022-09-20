@@ -34,7 +34,7 @@ export default function Nav() {
       isBordered={false}
       maxWidth="fluid"
       variant={'floating'}
-      className="bg-none child:!bg-gradient-to-bl child:dark:!from-base child:dark:!to-crust/80 child:!from-rosewater child:!to-flamingo/30"
+      className="bg-none child:!bg-gradient-to-tl child:dark:!from-base child:dark:!to-crust/20 child:!from-rosewater child:!to-flamingo/30 child:!mt-4"
     >
       <Navbar.Brand>
         <Avatar squared size="lg" src="/favicon.png" alt="ndo logo" />

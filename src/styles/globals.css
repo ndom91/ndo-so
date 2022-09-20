@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+#__next {
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+
 body {
-  @apply bg-gradient-to-r dark:from-crust dark:to-mantle from-flamingo to-rosewater;
+  @apply bg-gradient-to-r dark:from-crust dark:to-mantle from-flamingo to-rosewater selection:bg-mauve/20;
 }
 
 .nextui-navbar-container {

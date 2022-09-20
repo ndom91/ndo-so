@@ -1,4 +1,4 @@
-import { Container, Row, Col } from '@nextui-org/react'
+import { Container, Row } from '@nextui-org/react'
 import Head from "next/head";
 import Nav from '@/components/nav'
 
@@ -16,6 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         direction="column"
         justify="flex-start"
         alignItems="flex-start"
+        className="max-h-screen"
       >
         <Row>
           <Nav />
